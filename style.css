@@ -1,0 +1,45 @@
+.slider {
+	margin-top: 100px;
+	background: #ccc;
+	position: relative;
+	overflow: hidden;
+}
+
+.slide-wrapper::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.slide {
+	max-height: 600px;
+	float: left;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+button {
+	position: absolute;
+	top:  50%;
+	transform: translateY(-50%);
+	background: none;
+	border:  none;
+	cursor: pointer;
+	outline:  none;
+}
+
+button.slide-left {
+	left:  10px;
+}
+
+
+button.slide-right {
+	right:  10px;
+}
+
+.slide-toggle, .slide-right, .slide-left {
+	position: absolute;
+}
