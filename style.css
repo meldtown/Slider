@@ -1,5 +1,4 @@
 .slider {
-	margin-top: 100px;
 	background: #ccc;
 	position: relative;
 	overflow: hidden;
@@ -42,4 +41,36 @@ button.slide-right {
 
 .slide-toggle, .slide-right, .slide-left {
 	position: absolute;
+}
+
+.slide-toggle {
+	display: flex;
+	justify-content: space-between;
+	width: 15%;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.slide-toggler {
+	width: 10px;
+	height: 10px;
+	border: 1px solid #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	-ms-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+	cursor: pointer;
 }

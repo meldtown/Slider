@@ -11,6 +11,7 @@ var currentSlide = 1,
  	slideWrapper = $('.slide-wrapper'),
  	slideWrapperWidth = slideWrapper.width(totalSlideCount * 100 / slideCount + '%'),
  	slideElemsWidth,
+	slideToggler = $('.slide-toggler'),
  	leftButton = $('.slide-left'),
  	rightButton = $('.slide-right');
 
@@ -29,20 +30,29 @@ var currentSlide = 1,
  		slideElems = $('.slide');
  	}
 
- 	function slideToLeft(e) {
- 		if (currentSlide === 6) return;
+ 	function slideToLeft() {
+ 		if (currentSlide === totalSlideCount) return;
 		currentSlide++; 		
- 		slideWrapper.stop().animate({'marginLeft': '-=' + slideWidthPercentFormatted + '%'});	
+ 		slideWrapper.stop(false, true).animate({'marginLeft': '-=' + slideWidthPercentFormatted + '%'});
  	}
 
- 	function slideToRight(e) {
+ 	function slideToRight() {
  		if (currentSlide === 1) return;
 		currentSlide--; 		
- 		slideWrapper.stop().animate({'marginLeft': '+=' + slideWidthPercentFormatted + '%'});
+ 		slideWrapper.stop(false, true).animate({'marginLeft': '+=' + slideWidthPercentFormatted + '%'});
  	}
 
  	leftButton.click(slideToLeft);
  	rightButton.click(slideToRight);
+
+	slideToggler.click(function () {
+		var index = $(this).data('toggler-index'),
+			diff = Math.abs(index - currentSlide);
+		if (index === currentSlide) return;
+		if (index > currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '-=' + diff * slideWidthPercentFormatted + '%'});
+		if (index < currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '+=' + diff * slideWidthPercentFormatted + '%'});
+		currentSlide = index;
+	});
 
 
 
