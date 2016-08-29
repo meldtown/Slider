@@ -30,15 +30,27 @@ var currentSlide = 1,
  		slideElems = $('.slide');
  	}
 
+ 	function getCurrentToggler(index) {
+ 		return [].filter.call(slideToggler, function (item) {
+			return $(item).data('toggler-index') === index;
+		}).shift();
+	};
+
  	function slideToLeft() {
  		if (currentSlide === totalSlideCount) return;
-		currentSlide++; 		
+		currentSlide++;
+		var currentToggler = getCurrentToggler(currentSlide);
+		slideToggler.removeClass('active-toggler');
+		$(currentToggler).addClass('active-toggler');
  		slideWrapper.stop(false, true).animate({'marginLeft': '-=' + slideWidthPercentFormatted + '%'});
  	}
 
  	function slideToRight() {
  		if (currentSlide === 1) return;
-		currentSlide--; 		
+		currentSlide--;
+		var currentToggler = getCurrentToggler(currentSlide);
+		slideToggler.removeClass('active-toggler');
+		$(currentToggler).addClass('active-toggler');
  		slideWrapper.stop(false, true).animate({'marginLeft': '+=' + slideWidthPercentFormatted + '%'});
  	}
 
@@ -52,6 +64,8 @@ var currentSlide = 1,
 		if (index > currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '-=' + diff * slideWidthPercentFormatted + '%'});
 		if (index < currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '+=' + diff * slideWidthPercentFormatted + '%'});
 		currentSlide = index;
+		slideToggler.removeClass('active-toggler');
+		$(this).addClass('active-toggler');
 	});
 
 
