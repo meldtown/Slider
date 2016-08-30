@@ -1,6 +1,4 @@
-
-
-var currentSlide = 1,
+var currentSlide = 2,
 	slideCount = 3,
 	slider = $('.slider'),
 	sliderWidth = slider.width(),
@@ -15,7 +13,7 @@ var currentSlide = 1,
  	leftButton = $('.slide-left'),
  	rightButton = $('.slide-right');
 
- 	slideWrapper.css('marginLeft', slideWidthPercentFormatted + '%');
+ 	// slideWrapper.css('marginLeft', slideWidthPercentFormatted + '%');
  	slideElems.width((100 / totalSlideCount ) + '%');
  	slideElemWidth = $(slideElems[0]).width();
 
