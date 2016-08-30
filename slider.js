@@ -17,38 +17,39 @@ var currentSlide = 2,
  	slideElems.width((100 / totalSlideCount ) + '%');
  	slideElemWidth = $(slideElems[0]).width();
 
-
- 	function relocateSlideToRight() {
- 		$(slideElems[0]).appendTo(slideWrapper);
- 		slideElems = $('.slide');
- 	}
-
- 	function relocateSlideToLeft() {
- 		$(slideElems[totalSlideCount - 1]).prependTo(slideWrapper);
- 		slideElems = $('.slide');
- 	}
-
  	function getCurrentToggler(index) {
  		return [].filter.call(slideToggler, function (item) {
 			return $(item).data('toggler-index') === index;
 		}).shift();
 	};
 
+	function getCuttentSlide(index) {
+        return [].filter.call(slideElems, function (item) {
+            return $(item).data('slide-index') === index;
+        }).shift();
+    }
+
  	function slideToLeft() {
  		if (currentSlide === totalSlideCount) return;
 		currentSlide++;
-		var currentToggler = getCurrentToggler(currentSlide);
+		var currentToggler = getCurrentToggler(currentSlide),
+            currentSlideIndex = getCuttentSlide(currentSlide);
 		slideToggler.removeClass('active-toggler');
 		$(currentToggler).addClass('active-toggler');
+        slideElems.removeClass('active-slide');
+        $(currentSlideIndex).addClass('active-slide');
  		slideWrapper.stop(false, true).animate({'marginLeft': '-=' + slideWidthPercentFormatted + '%'});
  	}
 
  	function slideToRight() {
  		if (currentSlide === 1) return;
 		currentSlide--;
-		var currentToggler = getCurrentToggler(currentSlide);
+		var currentToggler = getCurrentToggler(currentSlide),
+            currentSlideIndex = getCuttentSlide(currentSlide);
 		slideToggler.removeClass('active-toggler');
 		$(currentToggler).addClass('active-toggler');
+        slideElems.removeClass('active-slide');
+        $(currentSlideIndex).addClass('active-slide');
  		slideWrapper.stop(false, true).animate({'marginLeft': '+=' + slideWidthPercentFormatted + '%'});
  	}
 
@@ -62,8 +63,11 @@ var currentSlide = 2,
 		if (index > currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '-=' + diff * slideWidthPercentFormatted + '%'});
 		if (index < currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '+=' + diff * slideWidthPercentFormatted + '%'});
 		currentSlide = index;
-		slideToggler.removeClass('active-toggler');
+        var currentSlideIndex = getCuttentSlide(currentSlide);
+        slideToggler.removeClass('active-toggler');
 		$(this).addClass('active-toggler');
+        slideElems.removeClass('active-slide');
+        $(currentSlideIndex).addClass('active-slide');
 	});
 
 

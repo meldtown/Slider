@@ -1,11 +1,23 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
 body {
+	margin: 0;
+	padding: 0;
 	-webkit-font-smoothing: antialiased;
+	background: no-repeat center/cover url(img/bg.jpg);
 }
 
 .slider {
-	background: #ccc;
 	position: relative;
-	overflow: hidden;
+	position: fixed;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .slide-wrapper::after {
@@ -52,7 +64,7 @@ button.slide-right {
 	justify-content: space-between;
 	width: 15%;
 	position: absolute;
-	bottom: 10px;
+	top: 130%;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -81,4 +93,20 @@ button.slide-right {
 
 .active-toggler {
 	background-color: #fff;
+}
+
+.active-slide {
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;	
+	-ms-transition: all .4s;
+	-o-transition: all .4s;
+	transition: all .4s;
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	transform: scale(1.5);
+	-webkit-box-shadow:  0 0 2px 5px rgba(150,150,150, .5);
+	-moz-box-shadow:  0 0 2px 5px rgba(150,150,150, .5);
+	box-shadow: 0 0 16px 4px rgba(255,255,255, .5);
 }
