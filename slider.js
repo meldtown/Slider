@@ -67,7 +67,9 @@ var currentSlide = 2,
         slideToggler.removeClass('active-toggler');
 		$(this).addClass('active-toggler');
         slideElems.removeClass('active-slide');
-        $(currentSlideIndex).addClass('active-slide');
+        setTimeout(function() {
+            $(currentSlideIndex).addClass('active-slide');
+        },300);
 	});
 
 
