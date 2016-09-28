@@ -23,7 +23,7 @@ var currentSlide = 2,
 		}).shift();
 	};
 
-	function getCuttentSlide(index) {
+	function getCurrentSlide(index) {
         return [].filter.call(slideElems, function (item) {
             return $(item).data('slide-index') === index;
         }).shift();
@@ -33,7 +33,7 @@ var currentSlide = 2,
  		if (currentSlide === totalSlideCount) return;
 		currentSlide++;
 		var currentToggler = getCurrentToggler(currentSlide),
-            currentSlideIndex = getCuttentSlide(currentSlide);
+            currentSlideIndex = getCurrentSlide(currentSlide);
 		slideToggler.removeClass('active-toggler');
 		$(currentToggler).addClass('active-toggler');
         slideElems.removeClass('active-slide');
@@ -45,7 +45,7 @@ var currentSlide = 2,
  		if (currentSlide === 1) return;
 		currentSlide--;
 		var currentToggler = getCurrentToggler(currentSlide),
-            currentSlideIndex = getCuttentSlide(currentSlide);
+            currentSlideIndex = getCurrentSlide(currentSlide);
 		slideToggler.removeClass('active-toggler');
 		$(currentToggler).addClass('active-toggler');
         slideElems.removeClass('active-slide');
@@ -63,7 +63,7 @@ var currentSlide = 2,
 		if (index > currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '-=' + diff * slideWidthPercentFormatted + '%'});
 		if (index < currentSlide) slideWrapper.stop(false, true).animate({'marginLeft': '+=' + diff * slideWidthPercentFormatted + '%'});
 		currentSlide = index;
-        var currentSlideIndex = getCuttentSlide(currentSlide);
+        var currentSlideIndex = getCurrentSlide(currentSlide);
         slideToggler.removeClass('active-toggler');
 		$(this).addClass('active-toggler');
         slideElems.removeClass('active-slide');
@@ -71,6 +71,9 @@ var currentSlide = 2,
             $(currentSlideIndex).addClass('active-slide');
         },300);
 	});
+
+
+
 
 
 
