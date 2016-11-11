@@ -10,7 +10,6 @@ body {
 }
 
 .slider {
-	position: relative;
 	position: fixed;
 	top: 50%;
 	min-width: 1000px;
@@ -48,7 +47,7 @@ button {
 }
 
 button.slide-left {
-	left:  10px;
+	left: 10px;
 }
 
 
